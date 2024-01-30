@@ -11,6 +11,31 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     index</br>
                     <a href="{{ route('contacts.create') }}">新規登録</a>
+
+                    <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+                        <table class="table-auto w-full text-left whitespace-no-wrap">
+                            <thead>
+                                <tr>
+                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm text-center bg-gray-100 rounded-tl rounded-bl">ID</th>
+                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm text-center bg-gray-100">お名前</th>
+                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm text-center bg-gray-100">件名</th>
+                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm text-center bg-gray-100">登録日</th>
+                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm text-center bg-gray-100">詳細</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($contacts as $contact)
+                                <tr>
+                                    <td class="border-t-2 border-gray-200 px-4 py-3 text-center"> {{ $contact->id }}</td>
+                                    <td class="border-t-2 border-gray-200 px-4 py-3 text-center">{{ $contact->name }}</td>
+                                    <td class="border-t-2 border-gray-200 px-4 py-3 text-center">{{ $contact->title }}</td>
+                                    <td class="border-t-2 border-gray-200 px-4 py-3 text-center">{{ $contact->created_at }}</td>
+                                    <td class="border-t-2 border-gray-200 px-4 py-3 text-center"><a class='text-blue-500' href="{{ route('contacts.show', ['contact' => $contact->id])}}">詳細を見る</a></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ContactForm;
 
 class ContactFormController extends Controller
 {
@@ -11,7 +12,9 @@ class ContactFormController extends Controller
      */
     public function index()
     {
-        return view('contacts.index'); // ディレクトリ名.ファイル名
+        // DBから一覧情報を取得して表示させる
+        $contacts = ContactForm::select('id', 'name', 'title', 'created_at')->get();
+        return view('contacts.index', compact('contacts')); // $contactsじゃなくて'contacts'
     }
 
     /**
@@ -27,7 +30,16 @@ class ContactFormController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ContactForm::create([
+            'name' => $request->name,
+            'title' => $request->title,
+            'email' => $request->email,
+            'url' => $request->url,
+            'gender' => $request->gender,
+            'age' => $request->age,
+            'contact' => $request->contact,
+        ]);
+        return to_route('contacts.index');
     }
 
     /**
@@ -35,7 +47,8 @@ class ContactFormController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $contact = ContactForm::find($id);
+        return view('contacts.show', compact('contact'));
     }
 
     /**
