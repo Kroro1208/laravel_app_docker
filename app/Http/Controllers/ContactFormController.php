@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ContactForm;
 use App\Services\CheckFormServices;
+use App\Http\Requests\StoreContactRequest;
 
 class ContactFormController extends Controller
 {
@@ -29,7 +30,7 @@ class ContactFormController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreContactRequest $request)
     {
         ContactForm::create([
             'name' => $request->name,
@@ -71,7 +72,7 @@ class ContactFormController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreContactRequest $request, string $id)
     {
         $contact = ContactForm::find($id);
         $contact->name = $request->name;
