@@ -73,6 +73,13 @@
                                             <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button>
                                         </div>
                                     </form>
+                                    <form id="delete_{{ $contact->id }}" class="ml-56" method="post" action="{{ route('contacts.destroy', ['contact' => $contact->id ])}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="p-2 w-full">
+                                            <button type="button" data-id="{{ $contact->id }}" onclick="deletePost(this)" class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg">削除する</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -81,4 +88,14 @@
             </div>
         </div>
     </div>
+    <!-- 削除ボタン押下時、メッセージを出す -->
+    <script>
+        function deletePost(e) {
+            'use strict'
+            if (confirm('本当に削除しますか？')) {
+                document.getElementById('delete_' + e.dataset.id).submit();
+            }
+        }
+    </script>
+
 </x-app-layout>
