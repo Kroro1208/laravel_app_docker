@@ -15,7 +15,10 @@ class ContactFormController extends Controller
     public function index()
     {
         // DBから一覧情報を取得して表示させる
-        $contacts = ContactForm::select('id', 'name', 'title', 'created_at')->get();
+        // $contacts = ContactForm::select('id', 'name', 'title', 'created_at')->get();
+
+        // ページネーション対応
+        $contacts = ContactForm::select('id', 'name', 'title', 'created_at')->paginate(20);
         return view('contacts.index', compact('contacts')); // $contactsじゃなくて'contacts'
     }
 
