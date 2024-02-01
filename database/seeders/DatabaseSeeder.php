@@ -14,8 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             TestSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            AreaSeeder::class,
+            ShopSeeder::class
         ]);
+
         \App\Models\ContactForm::factory(100)->create();
 
         // \App\Models\User::factory()->create([
