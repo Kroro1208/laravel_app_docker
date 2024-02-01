@@ -9,7 +9,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <a href="{{ route('contacts.create') }}" class="inline-block text-center mx-auto text-white bg-indigo-500 border-0 py-2 px-8 mb-5 focus:outline-none hover:bg-indigo-600 rounded text-lg">新規登録</a>
+                    <a href="{{ route('contacts.create') }}" class="inline-block text-center mx-auto text-white bg-indigo-500 border-0 py-2 px-8 mb-5 focus:outline-none hover:bg-indigo-600 rounded text-lg">新規登録</a><br>
+                    <!-- 検索フォーム -->
+                    <form class="mb-8" method="get" action="{{ route('contacts.index') }}">
+                        <input class="rounded" type="text" name="search" placeholder="検索">
+                        <button class="text-white bg-indigo-500 border-0 py-2 px-8 ml-2 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索する</button>
+                    </form>
                     <div class="lg:w-2/3 w-full mx-auto overflow-auto">
                         <table class="table-auto w-full text-left whitespace-no-wrap">
                             <thead>

@@ -12,13 +12,19 @@ class ContactFormController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // DBから一覧情報を取得して表示させる
         // $contacts = ContactForm::select('id', 'name', 'title', 'created_at')->get();
 
-        // ページネーション対応
-        $contacts = ContactForm::select('id', 'name', 'title', 'created_at')->paginate(20);
+        //  pagination対応
+        // $contacts = ContactForm::select('id', 'name', 'title', 'created_at')->paginate(20);
+
+        // 検索及びpagination対応
+        $search = $request->search; // この段階では複数キーワードで検索した場合、複数のワードが入ってくる
+        $query = ContactForm::search($search); // COntactForm Modelに記載したscopeSearchのscopeをとったメソッド名
+        $contacts = $query->select('id', 'name', 'title', 'created_at')->paginate(20);
+
         return view('contacts.index', compact('contacts')); // $contactsじゃなくて'contacts'
     }
 
