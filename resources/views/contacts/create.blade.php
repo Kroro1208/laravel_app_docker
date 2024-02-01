@@ -81,7 +81,7 @@
 
                                         <div class="p-2 w-full">
                                             <div class="relative">
-                                                <input type="checkbox" id="caution" name="caution" value="{{ old('caution') }}" class="rounded border-gray-300 mr-2">注意事項に同意する
+                                                <input type="checkbox" id="caution" name="caution" value="1" {{ old('caution') == '1' ? 'checked' : '' }} class="rounded border-gray-300 mr-2">注意事項に同意する
                                                 <x-input-error :messages="$errors->get('caution')" />
                                             </div>
                                         </div>
