@@ -6,18 +6,17 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-
-class RouteSeeder extends Seeder
+class RouteShopSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('routes')->insert([
-            ['name' => '山手線', 'sort_num' => 1],
-            ['name' => '京浜東北線', 'sort_num' => 2],
-            ['name' => '総武線', 'sort_num' => 3],
+        DB::table('route_shop')->insert([
+            ['route_id' => 1, 'shop_id' => 1],
+            ['route_id' => 2, 'shop_id' => 2],
+            ['route_id' => 3, 'shop_id' => 3],
         ]);
     }
 }

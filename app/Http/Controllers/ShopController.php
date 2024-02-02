@@ -15,6 +15,9 @@ class ShopController extends Controller
         // 1 対 多
         $shops = Area::find(1)->shops; // AreaModelのshopsメソッド
         $area = Shop::find(3)->area;
-        dd($shops, $area);
+
+        // 多対多
+        $routes = Shop::find(1)->routes()->get(); // ShopModelに記載したroutes()
+        dd($shops, $area, $routes);
     }
 }

@@ -16,7 +16,9 @@ class DatabaseSeeder extends Seeder
             TestSeeder::class,
             UserSeeder::class,
             AreaSeeder::class, // 親の方から先に記載する
-            ShopSeeder::class
+            ShopSeeder::class,
+            RouteSeeder::class,
+            RouteShopSeeder::class
         ]);
 
         \App\Models\ContactForm::factory(100)->create();
