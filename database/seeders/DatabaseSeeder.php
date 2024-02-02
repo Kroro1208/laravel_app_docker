@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TestSeeder::class,
             UserSeeder::class,
-            AreaSeeder::class,
+            AreaSeeder::class, // 親の方から先に記載する
             ShopSeeder::class
         ]);
 
